@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.rdoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.rdoc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.rdoc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Jul 17 16:16:04 +0200 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Installation</h1>
+<p>
+Should be a matter of a simple
+</p>
+<pre>
+ gem install averell23-gokdok
+</pre>
+<h1>Quick Start</h1>
+<p>
+<a href="../classes/Gokdok.html">Gokdok</a> allows you to automatically
+push your Ruby documentation to GitHub pages. Setting it up is dead easy,
+just add the the configuration to your Rakefile:
+</p>
+<pre>
+ Gokdoc::Dokker.new do |gd|
+   # Set some options if you want to
+ end
+</pre>
+<p>
+and then set up the system
+</p>
+<pre>
+  # One time only
+  rake gokdok:init
+  # Repeat each time you want to recreate the docs
+  rake gokdok:push
+  # Alternatively, if there are remote changes on the docs
+  rake gokdok:pushplus
+</pre>
+<h1>How and Why</h1>
+<p>
+Putting your documentation on GitHub automatically seemed to be a good
+idea. Still, all I found were ideas, most revolving around how to move the
+directory from one branch to the other.
+</p>
+<p>
+GitHub stores it&#8216;s pages in a separate branch of the repository. This
+is not the best solution to begin with, but trying to &quot;copy&quot; data
+between branches is, mildly put, an insane idea.
+</p>
+<p>
+Instead, <a href="../classes/Gokdok.html">Gokdok</a> will simply check out
+the &quot;gh-pages&quot; branch of your current repository to a
+subdirectory. This way, you will always have access to your pages (which
+can be useful in other cases, too) and you will never have to add the HTML
+to your main branch if you don&#8216;t want to.
+</p>
+<p>
+<a href="../classes/Gokdok.html">Gokdok</a> adds the checked out gh-pages
+to the .gitignore file. This means that the git in your main repository
+will never pick it up. If there is no gh-pages yet, an empty one will be
+created.
+</p>
+<h1>Calling Git</h1>
+<p>
+The task uses the <em>grit</em> library where it can, but <em>grit</em>
+doesn&#8216;t has a way of handling remote repositories yet. Thus, <a
+href="../classes/Gokdok.html">Gokdok</a> will also need to call the git
+binary in several places.
+</p>
+<p>
+In Linux and Mac installations, it should usually be able to figure out the
+binary on its own, as long as it is in the path. On Windows, you will most
+likely have to configure the binary by hand.
+</p>
+<h1>Why the name?</h1>
+<p>
+The whole handling of the pages, and the lack of a &quot;neat&quot; way to
+upload them struck me as stupid. It didn&#8216;t &quot;grok&quot;, so
+instead of GrokDoc it was <a href="../classes/Gokdok.html">Gokdok</a>. Of
+course this explanation is entirely made up and not true at all.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

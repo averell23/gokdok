@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Gokdok::Dokker</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Gokdok::Dokker</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/gokdok_rb.html">
+                lib/gokdok.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Rake::TaskLib
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Create a <a href="Dokker.html#M000001">new</a> object in your Rakefile to
+set up the tasks. See the initialize method for the options that you can
+pass in.
+</p>
+<pre>
+ Gokdok::Dokker.new do |gd|
+   gd.pages_home = 'gh-pages'
+   gd.doc_home = 'doc'
+   ...
+ end
+</pre>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000001">new</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">doc_home</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">git_path</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">pages_home</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">rdoc_task</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">remote_path</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">repo_url</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="#M000001" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">() {|self| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initialize the task. You may set the following properties in the init
+block:
+</p>
+<dl>
+<dt><b>git_path</b></dt><dd>Path to the git binary. If unset, a system call will
+
+</dd>
+</dl>
+<pre>
+           be used to find the binary. This will likely work on
+           Unix-like systems but fail on Windows.
+</pre>
+<dl>
+<dt><b>doc_home</b></dt><dd>Path to the place where the RDoc documentation is created. Defaults to
+&#8216;html&#8216;
+
+</dd>
+<dt><b>pages_home</b></dt><dd>Path were the repository with the gh-pages will be checked out to. Defaults
+to &#8217;.gh_pages&#8216;
+
+</dd>
+<dt><b>remote_path</b></dt><dd>Path in the remote repository where the RDoc will end up. Defaults to
+&#8216;html&#8216;
+
+</dd>
+<dt><b>repo_url</b></dt><dd>URL of the GIT repository that will be used. If unset, the Task will
+attempt to use the URL of the current &quot;origin&quot; branch.
+
+</dd>
+<dt><b>rdoc_task</b></dt><dd>The task that will be called to create the documentation. Defaults to :rdoc
+
+</dd>
+</dl>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/gokdok.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+36:       <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>) <span class="ruby-keyword kw">if</span>(<span class="ruby-identifier">block_given?</span>)
+37:       
+38:       <span class="ruby-ivar">@git_path</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">find_git_binary</span>
+39:       <span class="ruby-ivar">@repo_url</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">find_repo_url</span>
+40:       
+41:       <span class="ruby-ivar">@doc_home</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'html'</span>
+42:       <span class="ruby-ivar">@pages_home</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'.gh_pages'</span>
+43:       <span class="ruby-ivar">@remote_path</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'html'</span>
+44:       <span class="ruby-ivar">@rdoc_task</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">:rdoc</span>
+45:       
+46:       <span class="ruby-ivar">@doc_home</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">doc_home</span>)
+47:       <span class="ruby-ivar">@pages_home</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">pages_home</span>)
+48:       <span class="ruby-ivar">@home_dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">'..'</span>))
+49:       
+50:       <span class="ruby-identifier">define</span>
+51:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
