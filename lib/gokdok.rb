@@ -45,7 +45,7 @@ module Gokdok
       
       @doc_home = File.expand_path(doc_home)
       @pages_home = File.expand_path(pages_home)
-      @home_dir = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+      @home_dir = File.expand_path('.')
       
       define
     end
