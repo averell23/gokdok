@@ -2,17 +2,25 @@ require 'rake'
 require 'rake/tasklib'
 require 'grit'
 
-module Rake
+module Gokdok
   
-  class Gokdok < TaskLib
+  # Create a new object in your Rakefile to set up the tasks. See the initialize method
+  # for the options that you can pass in.
+  #
+  #  Gokdok::Dokker.new do |gd|
+  #    gd.pages_home = 'gh-pages'
+  #    gd.doc_home = 'doc'
+  #    ...
+  #  end
+  class Dokker < Rake::TaskLib
     attr_accessor :git_path, :doc_home, :pages_home, :remote_path, :repo_url, :rdoc_task
     
     # Initialize the task. You may set the following properties
     # in the init block:
     #
     # [*git_path*] Path to the git binary. If unset, a system call will
-    #            be used to find the binary. This will likely work on
-    #            Unix-like systems but fail on Windows.
+    #              be used to find the binary. This will likely work on
+    #              Unix-like systems but fail on Windows.
     # [*doc_home*] Path to the place where the RDoc documentation is created.
     #              Defaults to 'html'
     # [*pages_home*] Path were the repository with the gh-pages will be checked
@@ -130,13 +138,14 @@ module Rake
             puts "Deleting the old documentation in root #{pages_home}"
             Dir.chdir(pages_home)
             FileUtils.rm_rf(Dir['*'])
+            puts "Copy the new documentation into place"
+            FileUtils.cp_r(Dir["#{doc_home}/*"], remote_dir)
           else
             puts "Deleting the old documentation in #{remote_dir}"
             FileUtils.rm_rf(remote_dir)
+            puts "Copy the new documentation into place"
+            FileUtils.cp_r(doc_home, remote_dir)
           end
-            
-          puts "Copy the new Documentation into the right place"
-          FileUtils.cp_r(doc_home, remote_dir)
           
           repo.add('.')
           repo.commit_all('Committed new documentation set through Gokdok')
@@ -149,7 +158,7 @@ module Rake
         end
         
         desc 'Create the new documentation, pull and push'
-        taks :pushplus => :update do
+        task :pushplus => :update do
           Dir.chdir(pages_home)
           run_git_command('pull origin gh-pages')
           run_git_command('push origin gh-pages')

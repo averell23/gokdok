@@ -1,0 +1,59 @@
+= Installation
+
+Should be a matter of a simple
+
+ gem install averell23-gokdok
+
+=Quick Start
+
+Gokdok allows you to automatically push your Ruby documentation to GitHub pages. 
+Setting it up is dead easy, just add the the configuration to your Rakefile:
+
+ Gokdoc::Dokker.new do |gd|
+   # Set some options if you want to
+ end
+
+and then set up the system
+
+  # One time only
+  rake gokdok:init
+  # Repeat each time you want to recreate the docs
+  rake gokdok:push
+  # Alternatively, if there are remote changes on the docs
+  rake gokdok:pushplus
+  
+
+=How and Why
+
+Putting your documentation on GitHub automatically seemed to be a good idea.
+Still, all I found were ideas, most revolving around how to move the directory
+from one branch to the other.
+
+GitHub stores it's pages in a separate branch of the repository. This is not
+the best solution to begin with, but trying to "copy" data between branches 
+is, mildly put, an insane idea.
+
+Instead, Gokdok will simply check out the "gh-pages" branch of your current
+repository to a subdirectory. This way, you will always have access to your
+pages (which can be useful in other cases, too) and you will never have
+to add the HTML to your main branch if you don't want to.
+
+Gokdok adds the checked out gh-pages to the .gitignore file. This means that
+the git in your main repository will never pick it up. If there is no
+gh-pages yet, an empty one will be created.
+
+=Calling Git
+
+The task uses the _grit_ library where it can, but _grit_ doesn't has a way
+of handling remote repositories yet. Thus, Gokdok will also need to call the
+git binary in several places. 
+
+In Linux and Mac installations, it should usually be able to figure out the
+binary on its own, as long as it is in the path. On Windows, you will most 
+likely have to configure the binary by hand.
+
+=Why the name?
+
+The whole handling of the pages, and the lack of a "neat" way to upload them
+struck me as stupid. It didn't "grok", so instead of GrokDoc it was Gokdok.
+Of course this explanation is entirely made up and not true at all.

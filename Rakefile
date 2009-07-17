@@ -14,7 +14,7 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include("lib/**/*rb")
   rdoc.rdoc_files.include('LICENSE', 'CHANGES', 'README.rdoc')
   rdoc.main = "README.rdoc"
-  rdoc.title = "Watchdogger Documentation"
+  rdoc.title = "Gokdok Documentation"
   rdoc.options << '--line-numbers' << '--inline-source'
 end
 
@@ -26,11 +26,10 @@ Jeweler::Tasks.new do |s|
   s.description = "Allows you to automatically push your RDoc documentation to GitHub."
   s.authors = ["Daniel Hahn"]
   s.files = FileList["{lib}/**/*"]
-  s.extra_rdoc_files = ["README.rdoc", "CHANGES", "LICENSE", "sample_config.yml"]
+  s.extra_rdoc_files = ["README.rdoc", "CHANGES", "LICENSE"]
   s.add_dependency('grit', '>= 1.1.1')
 end
 
-Rake::Gokdok.new do |gd|
-  gd.repo_url = 'git@github.com:averell23/watchdogger.git'
-  gd.remote_path = 'html'
+Gokdok::Dokker.new do |gd|
+  gd.remote_path = '' # Put into the root directory
 end
