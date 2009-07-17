@@ -176,15 +176,10 @@ Initialize the task. You may set the following properties in the init
 block:
 </p>
 <dl>
-<dt><b>git_path</b></dt><dd>Path to the git binary. If unset, a system call will
+<dt><b>git_path</b></dt><dd>Path to the git binary. If unset, a system call will be used to find the
+binary. This will likely work on Unix-like systems but fail on Windows.
 
 </dd>
-</dl>
-<pre>
-           be used to find the binary. This will likely work on
-           Unix-like systems but fail on Windows.
-</pre>
-<dl>
 <dt><b>doc_home</b></dt><dd>Path to the place where the RDoc documentation is created. Defaults to
 &#8216;html&#8216;
 
