@@ -3,7 +3,6 @@ require 'meta_project'
 require 'rake'
 require 'rake/clean'
 require 'rake/rdoctask'
-require 'jeweler'
 load 'gokdok.gemspec'
 
 require 'lib/gokdok'

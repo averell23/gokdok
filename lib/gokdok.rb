@@ -52,6 +52,11 @@ module Gokdok
     
     private
     
+    # Fix git variables that may have been set by other tasks
+    def clear_git_vars
+      %w(GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE).each { |var| ENV[var] = nil }
+    end
+    
     def find_git_binary
        `which git`.chop
     end
@@ -110,6 +115,7 @@ module Gokdok
     end
     
     def run_git_command(command)
+      clear_git_vars
       result = system("#{git_path} #{command}")
       raise(RuntimeError, "Could not run: git #{command}") unless(result)
     end
@@ -131,6 +137,7 @@ module Gokdok
       
         desc 'Create the documentation without actually pushing it'
         task :update => rdoc_task do
+          clear_git_vars
           repo = Grit::Repo.new(pages_home)
           remote_dir = File.join(pages_home, remote_path)
           
