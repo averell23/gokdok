@@ -19,7 +19,7 @@ Rake::RDocTask.new do |rdoc|
 end
 
 begin
-  require jeweler
+  require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "gokdok"
     s.summary = "Upload your RDoc documentation to GitHub pages."
