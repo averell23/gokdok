@@ -9,7 +9,7 @@ Should be a matter of a simple
 Gokdok allows you to automatically push your Ruby documentation to GitHub pages. 
 Setting it up is dead easy, just add the the configuration to your Rakefile:
 
- Gokdoc::Dokker.new do |gd|
+ Gokdok::Dokker.new do |gd|
    # Set some options if you want to
  end
 

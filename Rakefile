@@ -18,16 +18,22 @@ Rake::RDocTask.new do |rdoc|
   rdoc.options << '--line-numbers' << '--inline-source'
 end
 
-Jeweler::Tasks.new do |s|
-  s.name = "gokdok"
-  s.summary = "Upload your RDoc documentation to GitHub pages."
-  s.email = "ghub@limitedcreativity.org"
-  s.homepage = "http://averell23.github.com/gokdok"
-  s.description = "Allows you to automatically push your RDoc documentation to GitHub."
-  s.authors = ["Daniel Hahn"]
-  s.files = FileList["{lib}/**/*"]
-  s.extra_rdoc_files = ["README.rdoc", "CHANGES", "LICENSE"]
-  s.add_dependency('grit', '>= 1.1.1')
+begin
+  require jeweler
+  Jeweler::Tasks.new do |s|
+    s.name = "gokdok"
+    s.summary = "Upload your RDoc documentation to GitHub pages."
+    s.email = "ghub@limitedcreativity.org"
+    s.homepage = "http://averell23.github.com/gokdok"
+    s.description = "Allows you to automatically push your RDoc documentation to GitHub."
+    s.authors = ["Daniel Hahn"]
+    s.files = FileList["{lib}/**/*"]
+    s.extra_rdoc_files = ["README.rdoc", "CHANGES", "LICENSE"]
+    s.add_dependency('grit', '>= 1.1.1')
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dendency) is not available. Install with: gem install jeweler"
 end
 
 Gokdok::Dokker.new do |gd|
